@@ -1,0 +1,50 @@
+<%- include("./head.ejs") %>
+<div id="search-container">
+    <h1 class="center">Search for a blog</h1>
+    <form class="center">
+        <input type="text" name="search" placeholder="Search for a blog" id="search-bar">
+        <button id="search-btn">Search</button>
+    </form>
+    <br>
+    </div>
+    <div id="search-result">
+        <!-- Dokumentene går her -->
+    </div>
+    <div>
+        <form class="signup">
+            <label for="email">Email:</label>
+            <input type="email" name="email">
+            <label for="username">Username:</label>
+            <input type="username" name="username">
+            <label for="password">Password:</label>
+            <input type="password" name="password">
+            <button>Signup</button>
+        </form>
+        <form class="login">
+            <label for="email">Email:</label>
+            <input type="email" name="email">
+            <label for="password">Password:</label>
+            <input type="password" name="password">
+            <button>Login</button>
+        </form>
+        <button class="logout">Logout</button>
+        <br>
+    </div>
+    <form class="add">
+        <label for="blogTitle">Title:</label>
+        <input type="text" name="blogTitle" required>
+        <label for="blogContent">Blog Content:</label>
+        <input type="text" name="blogContent" required>
+        <label for="blogID">Blog ID:</label>
+        <input type="text" name="blogID" required>
+
+        <button>Add blog</button>
+    </form>
+    <form class="delete">
+        <h1>!!TEMPORARY FIX FOR DELETING INDIVIDUAL BLOGS!!</h1>
+        <label for="id">Document ID:</label>
+        <input type="text" name="id" required>
+        <button>Delete Blog</button>
+    </form>
+    <script src="userHaroba.js" defer></script>
+<%- include("./footer.ejs") %>

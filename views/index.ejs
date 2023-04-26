@@ -1,0 +1,22 @@
+<%- include("./head.ejs") %>
+    <div>
+        <h1>Users:</h1>
+        <a href="/troll"><h2>Troll</h2></a>
+        <a href="/haroba"><h2>Haroba</h2></a>
+        <a href="/veiledning" id="protected-url"><h2>Veiledning</h2></a>
+    </div>
+    <script>
+        const veiledningRef = document.getElementById('protected-url');
+
+        veiledningRef.addEventListener('click', async () => {
+            const response = await fetch('/veiledning', {
+                headers: {
+                    'Authorization': `Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImU3OTMwMjdkYWI0YzcwNmQ2ODg0NGI4MDk2ZTBlYzQzMjYyMjIwMDAiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vcHJvdmVla3NhbWVuLWFwcmlsIiwiYXVkIjoicHJvdmVla3NhbWVuLWFwcmlsIiwiYXV0aF90aW1lIjoxNjgyNDcwOTkwLCJ1c2VyX2lkIjoiZXN4bXMzOEg2NlVzYUU5THpnUWRFVDRoUTB3MiIsInN1YiI6ImVzeG1zMzhINjZVc2FFOUx6Z1FkRVQ0aFEwdzIiLCJpYXQiOjE2ODI0NzA5OTAsImV4cCI6MTY4MjQ3NDU5MCwiZW1haWwiOiJ0cm9sbEB0cm9sbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidHJvbGxAdHJvbGwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.oBMjVk8XlcFPDslmzHBAgw7vSlgaglYFtUvvRO1qEhnA7sWRyCKIQhh8mc32PEml3LaN3iKbjgv2iHPsBYwkNHpUHjg6y7DlLHpapWn4wiQOGLyzGw_9w7-U2wtVR6hhlWKcjoo4ysDgBfPW9wByl67L-uKJFUWnPTIGeBze_00oQBWbXhhGvriceZduKB8wdxJJGZBqJBzWdeDPD4oITdn0onob0WFXH9229ckVKOUcwixTIye1ld7LzElXkA1vko3xouKhZzRpUhLGlFINMgxWUO0FS6vW-kT6yHrsZv_1DndCnjR1JEEwk9TXTBC7-ArpzFhT0pIC4cSd2OxG_g`
+                }
+            });
+
+            const data = await response.text();
+            console.log(data);
+        });
+    </script>
+<%- include("./footer.ejs") %>
