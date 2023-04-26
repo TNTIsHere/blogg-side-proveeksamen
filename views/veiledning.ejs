@@ -1,3 +1,62 @@
 <%- include("./head.ejs") %>
-    
+    <h1>Hvordan sette opp en ny bruker i Linux med SSH nøkkelpålogging</h1>
+    <hr>
+    <img src="./img/Screenshot_2.png">
+    <p>Steg 1: Det første du gjør er å lage en ny bruker med "adduser" kommandoen. Jeg gir den navnet "geir".</p>
+    <hr>
+    <img src="./img/Screenshot_3.png">
+    <p>Steg 2: Deretter må du gi denne nye brukeren et passord. OBS: Når du skriver in passordet så er det usynlig på skjermen din. Resten av detaljene som "Full name", osv, er ikke nødvendige.</p>
+    <hr>
+    <img src="./img/Screenshot_4.png">
+    <p>Steg 3: Her kjører vi en kommando som logger seg inn på brukeren vi nettopp lagde, i dette tilfellet er det "geir".</p>
+    <hr>
+    <img src="./img/Screenshot_5.png">
+    <p>Steg 4: Nå skriver vi en kommando som heter "ssh-keygen", dette lager et nøkkelpar for brukeren "geir".</p>
+    <hr>
+    <img src="./img/Screenshot_6.png">
+    <p>Steg 5: Etter å ha skrevet denne kommandoen får vi spørsmål om brukeren skal ha passord bak ssh-mappen sin og hvor skal denne plasseres, man kan bare trykke enter på alt.</p>
+    <hr>
+    <img src="./img/Screenshot_7.png">
+    <p>Steg 6: Etter ssh nøkkelparret blir laget, skal vi gå inn i den nye standard ssh-mappen som blir laget ved å bare trykke enter. Vi skriver "cd .ssh" fra "geir@pawel:~$" som betyr at vi er rotmappen.</p>
+    <hr>
+    <img src="./img/Screenshot_8.png">
+    <p>Steg 7: Så lager vi en ny fil som heter "authorized_keys", her legger du "public nøkkelen" til brukeren.</p>
+    <hr>
+    <img src="./img/Screenshot_9.png">
+    <p>Steg 8: Her kopierer og limer jeg inn den public nøkkelen til brukeren "geir".</p>
+    <hr>
+    <img src="./img/Screenshot_10.png">
+    <p>Steg 9: Etter du trykker CTRL + O, enter også CTRL + X skriver du "logout" kommandoen for å logge deg ut av brukerens konto og tilbake til din egen.</p>
+    <hr>
+    <h1>Hvordan gi en bruker sudorettigheter</h1>
+    <hr>
+    <img src="./img/Screenshot_11.png">
+    <p>Vi først har en ferdig laget bruker som heter "geir" fra før av, hvis du ikke har gjort det ennå så følger du veiledningen rett over først.</p>
+    <p>Steg 1: Her lager vi en ny gruppe som heter "sudo" også sier vi at brukeren "geir" skal være en del av den.</p>
+    <hr>
+    <img src="./img/Screenshot_12.png">
+    <p>Steg 2: Nå som vi har lagt til "geir" som en medlem av "sudo" gruppen vi lagde, kan vi sjekke om dette fungerte ved å skrive "groups geir".</p>
+    <hr>
+    <img src="./img/Screenshot_13.png">
+    <p>Steg 3: Nå som vi skrev "groups geir" skal dette være det vi får tilbake. Hvis det stemmer ikke at brukeren du lagde er inne der, prøv å start prosessen av denne veiledningen igjen.</p>
+    <hr>
+    <h1>Hvordan hoste en node.js applikasjon</h1>
+    <hr>
+    <img src="./img/Screenshot_14.png">
+    <p>Steg 1: Med tilgang til internett, du skal skrive "sudo apt install npm", dette laster ned hele node.js pakken.</p>
+    <hr>
+    <img src="./img/Screenshot_15.png">
+    <p>Steg 2: Vi lager en ny mappe som heter "nodeapp".</p>
+    <hr>
+    <img src="./img/Screenshot_16.png">
+    <p>Steg 3: Nå som vi er i mappen kan vi lage en ny fil som heter "app.js".</p>
+    <hr>
+    <img src="./img/Screenshot_17.png">
+    <p>Steg 4: Her har vi skrevet en console.log som skriver ut "This is a functioning node.js application". Du kan trykke på CTRL + O, enter også CTRL + X for å gå ut av filen.</p>
+    <hr>
+    <img src="./img/Screenshot_20.png">
+    <p>Steg 5: Nå som vi har gått ut av filen og lagret den, kan vi kjøre node.js applikasjonen vår ved å skrive "node app.js".</p>
+    <hr>
+    <img src="./img/Screenshot_21.png">
+    <p>Steg 6: Da har vi kjørt en node applikasjon.</p>
 <%- include("./footer.ejs") %>
