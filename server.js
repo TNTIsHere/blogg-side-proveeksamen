@@ -27,12 +27,12 @@ exapp.get('/', function(req, res) {
     res.render('index', { title: 'Blog Site' });
 });
 
-exapp.get('/login', function(req, res) {
-  res.render('login', { title: 'Blog Site' });
+exapp.get('/troll', function(req, res) {
+  res.render('troll', { title: 'Blog Site' });
 });
 
-exapp.get('/signup', function(req, res) {
-  res.render('signup', { title: 'Blog Site' });
+exapp.get('/haroba', function(req, res) {
+  res.render('haroba', { title: 'Blog Site' });
 });
 
 exapp.listen(3000, function() {
