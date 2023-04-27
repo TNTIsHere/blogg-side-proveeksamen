@@ -23,6 +23,7 @@ const auth = getAuth()
 // Collection ref
 const colRefBlogs = collection(db, "blogs")
 const colRefComments = collection(db, "comments")
+const colRefLikes = collection(db, "likes")
 
 // Console.log forEach collection data
 getDocs(colRefBlogs)
@@ -55,6 +56,8 @@ getDocs(colRefBlogs)
     snapshot.docs.forEach((doc) => {
         let item = doc.data();
         if (item.blogAuthor === "haroba") {
+            let hr = document.createElement("hr")
+            
             let div = document.createElement("div");
             div.classList.add("result-item");
             let br = document.createElement("br");
@@ -75,6 +78,15 @@ getDocs(colRefBlogs)
             deleteBlog.classList.add("blog-delete")
             deleteBlog.innerText = "Delete Blog"
             div.appendChild(deleteBlog)
+
+            let likeButton = document.createElement("button")
+            likeButton.classList.add("like-button")
+            likeButton.innerText = "Like!"
+            div.appendChild(likeButton)
+
+            let likeTotal = document.createElement("p")
+            likeTotal.classList.add("total-likes")
+            div.appendChild(likeTotal)
 
             let commentDiv = document.createElement("div");
             commentDiv.classList.add("comment-container");
@@ -101,6 +113,30 @@ getDocs(colRefBlogs)
             submitComment.innerText = "Submit Comment"
             commentDiv.appendChild(submitComment)
 
+            // Rendering likes
+            getDocs(colRefLikes)
+            .then((snapshot) => {
+                snapshot.docs.forEach(doc => {
+                    let likeItem = doc.data();
+                    
+                    if (item.blogAuthor === "haroba" && likeItem.blogID === item.blogID) {
+                        likeTotal.innerText = `${likeItem.likes}`
+                        likeItem.likes = likeTotal.innerText
+                    }
+                    else {
+
+                    }
+                })
+            })
+            
+            // Adding like
+            likeButton.addEventListener("click", (e) => {
+                e.preventDefault()
+                likeTotal.innerText++
+                console.log(likeTotal)
+
+            })
+
             // Adding comment
             submitComment.addEventListener("click", (e) => {
                 e.preventDefault()
@@ -116,7 +152,8 @@ getDocs(colRefBlogs)
                     console.log(err.message)
                 })
             })
-
+            
+            // Rendering comments
             getDocs(colRefComments)
             .then((snapshot) => {
                 snapshot.docs.forEach(doc => {
@@ -136,9 +173,10 @@ getDocs(colRefBlogs)
 
             document.querySelector("#search-result").appendChild(div);
             div.appendChild(commentDiv);
+            div.appendChild(hr)
         }
         else {
-            
+
         }
     })
 })
